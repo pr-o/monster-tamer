@@ -6,6 +6,8 @@ import {
   HEALTH_BAR_ASSET_KEYS,
   MONSTER_ASSET_KEYS,
 } from "#constants/asset-keys";
+import { WebFontFileLoader } from "@app/utils/web-font-file-loader";
+import { KENNEY_FUTURE_NARROW_FONT_NAME } from "@app/constants/font-keys";
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -19,6 +21,11 @@ export class PreloadScene extends Phaser.Scene {
   preload(): void {
     const monsterTamerAssetPath = "assets/images/monster-tamer";
     const kenneysAssetPath = "assets/images/kenneys-assets";
+
+    // load custom fonts
+    this.load.addFile(
+      new WebFontFileLoader(this.load, [KENNEY_FUTURE_NARROW_FONT_NAME]),
+    );
 
     // battle backgrounds
     this.load.image(
@@ -70,11 +77,6 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.add.image(0, 0, BATTLE_BACKGROUND_ASSET_KEYS.FOREST).setOrigin(0);
-  }
-
-  update() {
-    console.log("update");
-    this.textures.get(BATTLE_BACKGROUND_ASSET_KEYS.FOREST);
+    this.scene.start(SCENE_KEYS.BATTLE_SCENE);
   }
 }
