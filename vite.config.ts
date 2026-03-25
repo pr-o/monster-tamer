@@ -12,7 +12,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "#app": "/src",
+      "@app": "/src",
     },
   },
 });

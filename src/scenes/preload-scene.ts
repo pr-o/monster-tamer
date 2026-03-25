@@ -1,15 +1,80 @@
 import Phaser from "phaser";
+import { SCENE_KEYS } from "./scene-keys";
+import {
+  BATTLE_ASSET_KEYS,
+  BATTLE_BACKGROUND_ASSET_KEYS,
+  HEALTH_BAR_ASSET_KEYS,
+  MONSTER_ASSET_KEYS,
+} from "#constants/asset-keys";
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {
-    super({ key: "PreloadScene" });
+    super({ key: SCENE_KEYS.PRELOAD_SCENE });
+  }
+
+  init() {
+    // console.log("init");
   }
 
   preload(): void {
-    // Load assets here
+    const monsterTamerAssetPath = "assets/images/monster-tamer";
+    const kenneysAssetPath = "assets/images/kenneys-assets";
+
+    // battle backgrounds
+    this.load.image(
+      BATTLE_BACKGROUND_ASSET_KEYS.FOREST,
+      `${monsterTamerAssetPath}/battle-backgrounds/forest-background.png`,
+    );
+
+    // battle assets
+    this.load.image(
+      BATTLE_ASSET_KEYS.HEALTH_BAR_BACKGROUND,
+      `${kenneysAssetPath}/ui-space-expansion/custom-ui.png`,
+    );
+
+    // health bar assets
+    this.load.image(
+      HEALTH_BAR_ASSET_KEYS.RIGHT_CAP,
+      `${kenneysAssetPath}/ui-space-expansion/barHorizontal_green_right.png`,
+    );
+    this.load.image(
+      HEALTH_BAR_ASSET_KEYS.MIDDLE,
+      `${kenneysAssetPath}/ui-space-expansion/barHorizontal_green_mid.png`,
+    );
+    this.load.image(
+      HEALTH_BAR_ASSET_KEYS.LEFT_CAP,
+      `${kenneysAssetPath}/ui-space-expansion/barHorizontal_green_left.png`,
+    );
+
+    // monster assets
+    this.load.image(
+      MONSTER_ASSET_KEYS.CARNODUSK,
+      `${monsterTamerAssetPath}/monsters/carnodusk.png`,
+    );
+    this.load.image(
+      MONSTER_ASSET_KEYS.IGUANIGNITE,
+      `${monsterTamerAssetPath}/monsters/iguanignite.png`,
+    );
+    this.load.image(
+      MONSTER_ASSET_KEYS.AQUAVALOR,
+      `${monsterTamerAssetPath}/monsters/aquavalor.png`,
+    );
+    this.load.image(
+      MONSTER_ASSET_KEYS.FROSTSABER,
+      `${monsterTamerAssetPath}/monsters/frostsaber.png`,
+    );
+    this.load.image(
+      MONSTER_ASSET_KEYS.IGNIVOLT,
+      `${monsterTamerAssetPath}/monsters/ignivolt.png`,
+    );
   }
 
   create(): void {
-    this.scene.start("TitleScene");
+    this.add.image(0, 0, BATTLE_BACKGROUND_ASSET_KEYS.FOREST).setOrigin(0);
+  }
+
+  update() {
+    console.log("update");
+    this.textures.get(BATTLE_BACKGROUND_ASSET_KEYS.FOREST);
   }
 }

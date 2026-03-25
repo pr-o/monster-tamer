@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import en from "#app/locales/en";
+import en from "#locales/en";
 
 export async function initI18n(): Promise<void> {
   await i18next.init({
