@@ -8,6 +8,8 @@ import { HealthBar } from "#ui/health-bar";
 import { BattleMenu } from "#ui/battle-menu";
 
 export class BattleScene extends Phaser.Scene {
+  #battleMenu!: BattleMenu;
+
   constructor() {
     super({ key: SCENE_KEYS.BATTLE_SCENE });
   }
@@ -40,6 +42,7 @@ export class BattleScene extends Phaser.Scene {
     });
 
     // render out the main info and sub info panes
-    new BattleMenu(this);
+    this.#battleMenu = new BattleMenu(this);
+    this.#battleMenu.showBattleMenu();
   }
 }
