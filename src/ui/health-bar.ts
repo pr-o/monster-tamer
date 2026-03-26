@@ -59,7 +59,7 @@ export class HealthBar {
       this.#scene.add
         .image(0, 0, BATTLE_ASSET_KEYS.HEALTH_BAR_BACKGROUND)
         .setOrigin(0)
-        .setScale(1, 0.8),
+        .setScale(1, 0.85),
       monsterName,
       this.#createBar(34, 34),
       hpLabel,
